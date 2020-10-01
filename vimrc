@@ -12,16 +12,36 @@ set laststatus=2
 if &compatible
   set nocompatible
 endif
+" Add the dein installation directory into runtimepath
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-call dein#begin(expand('~/.vim/dein'))
+if dein#load_state('~/.vim/dein')
+  call dein#begin('~/.vim/dein')
 
-call dein#add('Shougo/dein.vim')
-call dein#add('kovisoft/slimv')
-call dein#add('altercation/vim-colors-solarized')
-call dein#add('easymotion/vim-easymotion')
+  call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
 
-call dein#end()
+  call dein#add('preservim/nerdtree')
+  call dein#add('kovisoft/slimv')
+  call dein#add('altercation/vim-colors-solarized')
+  call dein#add('easymotion/vim-easymotion')
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+filetype plugin indent on
+
+" if dein#check_install()
+"  call dein#install()
+" endif
+
+" NERDTree
+autocmd VimEnter * NERDTree | wincmd p
 
 " solarized
 let g:solarized_termcolors=256
