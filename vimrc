@@ -9,6 +9,9 @@ set showcmd
 set showmatch
 set laststatus=2
 
+set hls
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 if &compatible
   set nocompatible
 endif
