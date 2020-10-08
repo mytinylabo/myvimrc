@@ -1,0 +1,64 @@
+{
+    "editor.renderWhitespace": "all",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "window.zoomLevel": 0,
+    "editor.multiCursorModifier": "alt",
+    "vim.easymotion": true,
+    "vim.leader": "<space>",
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<Leader>", "s"],
+            "after": ["<Leader>", "<Leader>", "s"]
+        },
+        {
+            "before": ["<Leader>", "h"],
+            "commands": ["workbench.action.focusLeftGroup"]
+        },
+        {
+            "before": ["<Leader>", "l"],
+            "commands": ["workbench.action.focusRightGroup"]
+        },
+        {
+            "before": ["<Leader>", "b"],
+            "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
+        {
+            "before": ["<Leader>", "u"],
+            "commands": ["extension.changeCase.constant"]
+        },
+        {
+            "before": ["<Home>"],
+            "after": ["^"]
+        }
+    ],
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        },
+        {
+            "before": ["<C-h>"],
+            "after": ["<Left>"]
+        },
+        {
+            "before": ["<C-l>"],
+            "after": ["<Right>"]
+        },
+        {
+            "before": ["<C-j>"],
+            "after": ["<Down>"]
+        },
+        {
+            "before": ["<C-k>"],
+            "after": ["<Up>"]
+        }
+    ],
+    "editor.fontFamily": "SF Mono Square",
+    "terminal.integrated.fontWeightBold": "normal",
+    "editor.lineHeight": 18,
+    "editor.fontSize": 15,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+}
