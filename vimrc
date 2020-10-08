@@ -5,6 +5,7 @@ let mapleader = "\<Space>"
 
 set backspace=
 set number
+set relativenumber
 set title
 set noshowmode
 set showcmd
@@ -29,16 +30,19 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 nnoremap <leader><leader>q :qa<CR>
 
+nnoremap <Home> ^
+nnoremap <leader><CR> i<CR><Esc>
+
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
-nnoremap <silent>bp :bprevious<CR>
-nnoremap <silent>bn :bnext<CR>
-nnoremap <silent>bb :b#<CR>
-nnoremap <silent>bm :bm<CR>
-nnoremap <silent>bd :bdelete<CR>
+nnoremap <silent> <leader>bp :bprevious<CR>
+nnoremap <silent> <leader>bn :bnext<CR>
+nnoremap <silent> <leader>bb :b#<CR>
+nnoremap <silent> <leader>bm :bm<CR>
+nnoremap <silent> <leader>bd :bdelete<CR>
 
 if &compatible
   set nocompatible
