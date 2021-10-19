@@ -24,6 +24,7 @@ set undofile
 set incsearch
 
 set updatetime=2000
+set ttimeoutlen=10
 
 set hls
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
@@ -32,6 +33,8 @@ nnoremap <leader><leader>q :qa<CR>
 
 nnoremap <Home> ^
 nnoremap <leader><CR> i<CR><Esc>
+
+inoremap <C-l> <Right>
 
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
@@ -43,6 +46,8 @@ nnoremap <silent> <leader>bn :bnext<CR>
 nnoremap <silent> <leader>bb :b#<CR>
 nnoremap <silent> <leader>bm :bm<CR>
 nnoremap <silent> <leader>bd :bdelete<CR>
+
+nnoremap <C-y> :e ~/.vimrc<CR>
 
 if &compatible
   set nocompatible
@@ -62,7 +67,11 @@ if dein#load_state('~/.vim/dein')
 
   call dein#add('preservim/nerdtree')
   call dein#add('kovisoft/slimv')
-  call dein#add('altercation/vim-colors-solarized')
+  " call dein#add('altercation/vim-colors-solarized')
+  " call dein#add('dracula/vim')
+  " call dein#add('sjl/badwolf')
+  call dein#add('tomasiser/vim-code-dark')
+  call dein#add('kana/vim-textobj-user')
   call dein#add('easymotion/vim-easymotion')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-commentary')
@@ -70,7 +79,7 @@ if dein#load_state('~/.vim/dein')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('ryanoasis/vim-devicons')
+  " call dein#add('ryanoasis/vim-devicons')
   call dein#add('ctrlpvim/ctrlp.vim')
 
   call dein#end()
@@ -90,7 +99,15 @@ autocmd VimEnter * NERDTree | wincmd p
 let g:solarized_termcolors = 256
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme codedark
+
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight LineNr ctermbg=none
+highlight Folded ctermbg=none
+highlight EndOfBuffer ctermbg=none 
+" highlight Normal ctermfg=grey
+" highlight Comment ctermfg=darkgrey
 
 let g:gitgutter_override_sign_column_highlight = 0
 highlight SignColumn ctermbg=black
@@ -105,19 +122,18 @@ let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
 
 " slimv
-let g:slimv_lisp = '/usr/bin/ros run'
-let g:slimv_impl = 'sbcl'
-let g:slimv_swank_cmd = '! screen -d -m -t REPL-SBCL ros run --load $HOME/.roswell/lisp/slime/2020.07.15/start-swank.lisp'
+let g:slimv_swank_cmd = '! screen -d -m -t REPL-SBCL ros run --load $HOME/.vim/dein/repos/github.com/kovisoft/slimv/slime/start-swank.lisp' 
+let g:slimv_swank_scheme = '! screen -d -m -t REPL_SCHEME scheme --load $HOME/.vim/dein/repos/github.com/kovisoft/slimv/slime/contrib/swank-mit-scheme.scm'
 let g:paredit_electric_return = 0
 let g:slimv_repl_split = 4
 let g:lisp_rainbow = 1
 
 " airline
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#whitespace#mixed_indent_algo = 1
-let g:airline_theme = 'wombat'
+let g:airline_theme = 'codedark'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -133,13 +149,13 @@ let g:airline_section_x = '%{&filetype}'
 " let g:airline#extensions#whitespace#enabled = 1
 
 " powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.dirty = '  '
-let g:airline_symbols.notexists = '  '
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+" " let g:airline_symbols.linenr = '☰'
+" let g:airline_symbols.maxlinenr = ''
+" let g:airline_symbols.dirty = '  '
+" let g:airline_symbols.notexists = '  '
